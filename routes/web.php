@@ -1,4 +1,6 @@
 <?php
+// Make:reques StoreFotoRequests, UpdateFotoRequests
+// php artisan make:controller FotoController --resource --model=Foto --requests
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
@@ -46,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(AlbumController::class)->group(function(){
         Route::get('/album','index');
         Route::get('/albums/new','create');
+        Route::post('/albums/upload','store');
     });
 
 });

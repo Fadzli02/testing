@@ -12,9 +12,13 @@ class Foto extends Model
     protected $primaryKey = 'fotoId';
     protected $guarded = ['fotoId'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'userId', 'userId');
     }
 
-
+    public function album()
+    {
+        return $this->belongsTo(Album::class, 'albumId', 'albumId');
+    }
 }

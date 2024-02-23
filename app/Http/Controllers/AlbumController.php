@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\album;
-use Illuminate\Http\Request;
+use App\Models\Album;
+use App\Http\Requests\StoreAlbumRequest;
+use App\Http\Requests\UpdateAlbumRequest;
+use App\Models\Foto;
+use App\Models\User;
 
 class AlbumController extends Controller
 {
@@ -13,7 +16,7 @@ class AlbumController extends Controller
     public function index()
     {
         $title = "Album";
-        return view('album.index',compact('title'));
+        return view('album.index', compact('title'));
     }
 
     /**
@@ -22,23 +25,24 @@ class AlbumController extends Controller
     public function create()
     {
         $title = "Create Album";
-        $foto = "";
+        $user = User::where('userId', auth()->id())->first();
+        $foto = Foto::where('userId', auth()->id())->get();
 
-        return view('album.create',compact('title'));
+        return view('album.create', compact('title','user','foto')) ;
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAlbumRequest $request)
     {
-        //
+        $input =$request->all();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(album $album)
+    public function show(Album $album)
     {
         //
     }
@@ -46,7 +50,7 @@ class AlbumController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(album $album)
+    public function edit(Album $album)
     {
         //
     }
@@ -54,7 +58,7 @@ class AlbumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, album $album)
+    public function update(UpdateAlbumRequest $request, Album $album)
     {
         //
     }
@@ -62,7 +66,7 @@ class AlbumController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(album $album)
+    public function destroy(Album $album)
     {
         //
     }

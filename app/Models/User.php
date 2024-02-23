@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model implements Authenticatable
 {
     use HasFactory, Michie;
-    
+
     protected $primaryKey = 'userId';
 
     // protected $guarded = 'userId'; BODOHHH
@@ -18,11 +18,18 @@ class User extends Model implements Authenticatable
 
     public $timestamps = false;
 
-    public function foto(){
-        return $this->hasMany(Foto::class,'userId','userId');
+    public function foto()
+    {
+        return $this->hasMany(Foto::class, 'userId', 'userId');
     }
 
-    public function likeFoto(){
-        return $this->hasMany(Foto::class,'userId','userId');
+    public function album()
+    {
+        return $this->hasMany(Album::class, 'userId', 'userId');
+    }
+
+    public function likeFoto()
+    {
+        return $this->hasMany(Foto::class, 'userId', 'userId');
     }
 }
