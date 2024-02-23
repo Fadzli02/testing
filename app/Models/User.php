@@ -17,4 +17,12 @@ class User extends Model implements Authenticatable
     protected $guarded = ['userId'];
 
     public $timestamps = false;
+
+    public function foto(){
+        return $this->hasMany(Foto::class,'userId','userId');
+    }
+
+    public function likeFoto(){
+        return $this->hasMany(Foto::class,'userId','userId');
+    }
 }

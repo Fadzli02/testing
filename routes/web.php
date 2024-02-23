@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\UserController;
@@ -33,5 +34,18 @@ Route::middleware('auth')->group(function () {
     
     Route::controller(FotoController::class)->group(function(){
         Route::get('/profile','index');
+        Route::get('/newImage','create');
+        Route::post('/upload','store');
+        Route::get('/edit/{fotoId}/{username}','edit');
+        Route::post('/edit/{fotoId}','update');
+        Route::post('/delete/{fotoId}','destroy');
+
+        Route::get('/detail/{fotoId}','show');
     });
+
+    Route::controller(AlbumController::class)->group(function(){
+        Route::get('/album','index');
+        Route::get('/albums/new','create');
+    });
+
 });

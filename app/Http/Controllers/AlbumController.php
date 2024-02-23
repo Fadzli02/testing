@@ -12,7 +12,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Album";
+        return view('album.index',compact('title'));
     }
 
     /**
@@ -20,7 +21,10 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Create Album";
+        $foto = "";
+
+        return view('album.create',compact('title'));
     }
 
     /**
